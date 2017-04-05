@@ -1,7 +1,7 @@
 # postfix-docker
 Dockerfile and run.sh for https://hub.docker.com/r/amane/postfix/
 
-# run Postfix in docker
+# run Postfix in Docker
 ```
 docker run --rm -p 2525:25 -e MYHOSTNAME="mail.example.com" -e MYDOMAIN="example.com" amane/postfix
 ```
