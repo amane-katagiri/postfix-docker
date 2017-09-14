@@ -10,7 +10,7 @@ if [ -n "$MYDOMAIN" ]; then
     postconf mydomain="$MYDOMAIN"
 fi
 if [ -n "$MYNETWORKS" ]; then
-    postconf mynetworks="`postconf mynetworks`, $MYNETWORKS"
+    postconf "`postconf mynetworks`, $MYNETWORKS"
 fi
 
 /usr/sbin/postfix start
