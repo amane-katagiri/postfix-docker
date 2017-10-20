@@ -12,6 +12,10 @@ fi
 if [ -n "$MYNETWORKS" ]; then
     postconf "`postconf mynetworks`, $MYNETWORKS"
 fi
+if [ -n "$HIDERECEIVED" ]; then
+    echo "/^Received:/ IGNORE" > /etc/postfix/header_checks
+    postconf header_checks="regexp:/etc/postfix/header_checks"
+fi
 
 /usr/sbin/postfix start
 while true; do sleep 3600 & wait; done
