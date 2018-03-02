@@ -16,6 +16,10 @@ if [ -n "$HIDERECEIVED" ]; then
     echo "/^Received:/ IGNORE" > /etc/postfix/header_checks
     postconf header_checks="regexp:/etc/postfix/header_checks"
 fi
+if [ -n "$WHITEADDRESS" ]; then
+    echo "/$WHITEADDRESS/ OK" > /etc/postfix/recipient_whitelist
+    postconf smtpd_sender_restrictions="check_recipient_access regexp:/etc/postfix/recipient_whitelist,reject"
+fi
 
 /usr/sbin/postfix start
 while true; do sleep 3600 & wait; done
