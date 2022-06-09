@@ -6,6 +6,7 @@ RUN apk add --update --no-cache postfix && \
     postconf inet_interfaces="all" && \
     postconf smtp_tls_security_level="may" && \
     postconf smtpd_banner="$myhostname ESMTP" && \
-    postconf smtputf8_enable="no"
+    postconf smtputf8_enable="no" && \
+    postconf maillog_file="/var/log/mail.log"
 COPY run.sh /run.sh
 CMD ["/run.sh"]
