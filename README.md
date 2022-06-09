@@ -10,4 +10,4 @@ Set `HIDERECEIVED` as a **nonempty** string to remove `Received:` headers from a
 
 Set `WHITEADDRESS` as mail address list to restrict recipient. The list is regular expressions separated with ";".
 
-You can communicate with Postfix by `telnet localhost 2525` or `heirloom-mailx -S "smtp=smtp://localhost:2525" recipient@example.com` now.
+You can communicate with Postfix by `telnet localhost 2525` or `echo TEST_BODY | heirloom-mailx -s TEST_SUBJECT -S "smtp-hostname=smtp://localhost:2525" -S "v15-compat" recipient@example.com` now.
